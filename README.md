@@ -6,7 +6,7 @@ Your requirements, verification procedures, traceability links and review eviden
 |---|---|---|
 | Free, MIT. Install and run the demo. | Your fields, review rules, ReqView exports and paperwork. | Installed and operated through Omni by Enterprise DNA. One setup fee, then a retainer. |
 
-[Get your version built](https://enterprisedna.co/omni/book/?offer=replace-software&utm_source=github&utm_medium=readme&utm_campaign=reqview) · [Instead of ReqView](https://enterprisedna.co/omni/instead-of/reqview)
+[Get your version built](https://enterprisedna.co/omni/book/?offer=replace-software&utm_source=github&utm_medium=readme&utm_campaign=reqview) · [Instead of ReqView](https://enterprisedna.co/omni/instead-of/reqview?utm_source=github&utm_medium=readme&utm_campaign=reqview)
 
 ## Start with a working review
 
