@@ -1,0 +1,42 @@
+[
+  [
+    "Which passing tests refer to an older requirement revision?",
+    "coverage"
+  ],
+  [
+    "Which links need review after either endpoint changed?",
+    "suspect-links"
+  ],
+  [
+    "Which requirements have no linked test procedure?",
+    "coverage"
+  ],
+  [
+    "Which approved requirements still lack current passing evidence?",
+    "release-readiness"
+  ],
+  [
+    "What else is affected if we change the buffer requirement?",
+    "change-impact --ref=SRS:1"
+  ],
+  [
+    "Who has the largest overdue review queue?",
+    "owner-load"
+  ],
+  [
+    "Which requirements have no source reference?",
+    "source-gaps"
+  ],
+  [
+    "What changed since our recorded design review?",
+    "baseline-diff --ref=REVIEW-01"
+  ],
+  [
+    "Which personal-information records need a purpose review?",
+    "compliance"
+  ],
+  [
+    "Who changed a record and what did it say before?",
+    "activity"
+  ]
+]

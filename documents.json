@@ -1,11 +1,48 @@
 [
   {
-    "name": "example",
-    "title": "TODO(author): the first document this industry must produce",
-    "for_each": "select gen_random_uuid() as id, 'Example' as name",
-    "file": "name",
+    "name": "specification",
+    "title": "Requirements specification",
+    "for_each": "select id,code from documents order by code",
+    "file": "code",
     "sections": [
-      { "title": "Details", "sql": "select 'replace me' as item, $1::text as record_id" }
+      {
+        "title": "Requirements and procedures",
+        "sql": "select code,heading,body,source,method,owner,status,revision from items where document_id=$1 order by code",
+        "note": "Controlled copy only after human review and baseline approval."
+      }
+    ]
+  },
+  {
+    "name": "verification-matrix",
+    "title": "Requirements verification matrix",
+    "for_each": "select id,code from documents order by code",
+    "file": "code",
+    "sections": [
+      {
+        "title": "Coverage and current evidence",
+        "sql": "select v.code,v.heading,v.linked_tests,v.current_passes,v.latest_failures,v.stale_results from v_verification v join items i on i.id=v.id where i.document_id=$1 order by v.code"
+      },
+      {
+        "title": "Recorded evidence",
+        "sql": "select req.code as requirement,t.code as procedure,x.result,x.evidence,x.actor,x.created_at from items req join links l on l.to_id=req.id and l.kind='verification' join items t on t.id=l.from_id left join v_latest_runs x on x.test_id=t.id where req.document_id=$1 order by req.code,t.code",
+        "note": "A recorded pass is not current proof when the coverage section marks it stale."
+      }
+    ]
+  },
+  {
+    "name": "review-record",
+    "title": "Requirement review record",
+    "for_each": "select id,code from items where kind='requirement' order by code",
+    "file": "code",
+    "sections": [
+      {
+        "title": "Decision and evidence",
+        "sql": "select code,heading,status,revision,approved_revision,approved_by,approval_evidence,approved_on from items where id=$1"
+      },
+      {
+        "title": "Change and note history",
+        "sql": "select actor,action,note,before_data,after_data,created_at from activity where record_id=$1 order by sequence"
+      }
     ]
   }
 ]

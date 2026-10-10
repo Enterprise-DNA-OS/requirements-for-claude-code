@@ -1,0 +1,3 @@
+id,heading,text,level,section,origin,status,verification,owner,source,method
+10,Environmental rating,"The cabinet shall resist rain, dust and heat.",1,1,,Draft,"TEST-10,TEST-11",Mara Chen,BRIEF-09,test
+11,Service label,The label shall show a service contact.,1,2,,Draft,,Ari Patel,BRIEF-10,inspection

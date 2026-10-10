@@ -1,0 +1,20 @@
+[
+  {
+    "title": "Old passing evidence",
+    "ask": "Which requirements changed after their tests passed?",
+    "command": "npm run requirements -- coverage",
+    "output": "  code   heading               owner      linked_tests  current_passes  latest_failures  stale_results\n  -----  --------------------  ---------  ------------  --------------  ---------------  -------------\n  SRS:1  Buffer readings       Mara Chen  1             0               0                1            \n  SRS:2  Restore transmission  Mara Chen  1             0               1                0            \n  SRS:3  Operator access                  0             0               0                0            \n  SRS:4  Cabinet label         Ari Patel  1             1               0                0"
+  },
+  {
+    "title": "Links needing review",
+    "ask": "Which relationships need another look after a change?",
+    "command": "npm run requirements -- suspect-links",
+    "output": "  id                                    from_code  to_code  kind          linked_from  current_from  linked_to  current_to\n  ------------------------------------  ---------  -------  ------------  -----------  ------------  ---------  ----------\n  c2b8c07d-bcdc-4741-9288-570d2f343044  SRS:2      SRS:1    depends       1            1             1          2         \n  d80dd9bf-ac8b-434c-acc6-d0a769bae90d  TEST:1     SRS:1    verification  1            1             1          2"
+  },
+  {
+    "title": "Change impact",
+    "ask": "What else needs review if we change the buffer requirement?",
+    "command": "npm run requirements -- change-impact --ref=SRS:1",
+    "output": "  code    heading                    kind         owner      status\n  ------  -------------------------  -----------  ---------  ------\n  SRS:2   Restore transmission       requirement  Mara Chen  review\n  TEST:1  Buffer disconnection test  test         Ari Patel  review\n  TEST:2  Restore timing test        test         Ari Patel  review"
+  }
+]

@@ -1,13 +1,39 @@
 [
   {
     "name": "week",
-    "title": "This week",
-    "subtitle": "Requirements for Claude Code: what needs attention, rendered by npm run view",
+    "title": "Requirements review this week",
     "sections": [
       {
+        "title": "Release readiness",
+        "sql": "select code,heading,status,linked_tests,current_passes from v_verification order by code"
+      },
+      {
         "title": "Needs attention",
-        "note": "TODO(author): point this at the industry's attention view (overdue, stuck, quiet).",
-        "sql": "select 'replace me' as item, 'TODO(author)' as why"
+        "sql": "select * from v_attention order by code,finding"
+      }
+    ]
+  },
+  {
+    "name": "traceability",
+    "title": "Traceability and evidence",
+    "sections": [
+      {
+        "title": "Verification coverage",
+        "sql": "select code,heading,linked_tests,current_passes,latest_failures,stale_results from v_verification order by code"
+      },
+      {
+        "title": "Suspect links",
+        "sql": "select * from v_suspect_links order by from_code,to_code"
+      }
+    ]
+  },
+  {
+    "name": "workload",
+    "title": "Review workload",
+    "sections": [
+      {
+        "title": "Review queue",
+        "sql": "select code,heading,owner,due_on,status from items where status in ('draft','review') order by due_on nulls last,code"
       }
     ]
   }
